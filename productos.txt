@@ -1,0 +1,3 @@
+{"name":"Apple MacBook Pro 17","price":2999, "color":"Silver", "category":"Laptop", "id":1}
+{"name":"Microsoft Surface Pro","price":1999, "color":"White", "category":"Laptop PC", "id":2}
+{"name":"Magic Mouse 2","price":99, "color":"Black", "category":"Accesories", "id":3}
