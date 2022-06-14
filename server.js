@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('User conectado, id: ' + socket.id);
     socket.emit('messages', messages);
-    socket.emit('products', products);
+    //socket.emit('products', products);
 
     socket.on('new-message', (data) => {
         messages.push(data);
