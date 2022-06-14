@@ -113,8 +113,10 @@ async function fetchProducts() {
         const response = await fetch('/api/productos/', {mode: 'no-cors'});
         if (response.ok) {
             const data = await response.json();
-            console.log('--->', data);
-            renderProductos(data);
+            // renderProductos(data);
+            data.map(element => {
+                socket.emit('new-product', element);
+            })
             return data;
         }
     } catch (error) {

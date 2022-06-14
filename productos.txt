@@ -3,3 +3,4 @@
 {"name":"Magic Mouse 2","price":99, "color":"Black", "category":"Accesories", "id":3}
 {"name":"teclado","color":"Purple","price":"90","category":"Accesories","id":4}
 {"name":"lapicero","color":"Green","price":"9","category":"Accesories","id":5}
+{"name":"libro","color":"Green","price":"999","category":"Laptop PC","id":6}
