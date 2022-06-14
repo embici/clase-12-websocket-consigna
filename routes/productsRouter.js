@@ -37,13 +37,13 @@ router.get('/:id', async (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    const { name, thumbnail, price } = req.body;
+    const { name, color, price, category } = req.body;
 
-    if (!name || !thumbnail || !price) {
+    if (!name || !color || !price || !category) {
         return res.status(400).send({ error: 'Los datos están incompletos' });
     }
 
-    await prodContainer.save({ name, thumbnail, price });
+    await prodContainer.save({ name, color, price, category });
     await prodContainer.init();
 
     return res.send({ message: 'Producto agregada exitosamente'})

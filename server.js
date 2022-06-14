@@ -9,7 +9,7 @@ const moment = require('moment');
 const app = express();
 const httpServer = http.createServer(app); // pasamanos de express a http
 const io = new Server(httpServer);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -49,7 +49,6 @@ io.on('connection', (socket) => {
 
     socket.on('new-product', (data) => {
         products.push(data);
-        console.log('products', products);
         io.sockets.emit('products', products);
     });
 });

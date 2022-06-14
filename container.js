@@ -24,7 +24,7 @@ class Contenedor {
             objeto = {...objeto, id: this.data.length + 1}
             console.log(this.data)
             this.data.push(objeto)
-            await fs.promises.appendFile(this.archivo, JSON.stringify(objeto) + '\n')
+            await fs.promises.appendFile(this.archivo, '\n'+JSON.stringify(objeto))
             return objeto.id
         }
         catch (error) {

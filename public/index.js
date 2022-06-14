@@ -69,13 +69,12 @@ const addMessage = () => {
 
 const addProduct = (item) => {
     const product = {
-        name: (typeof item !== "undefined") ? item.name : document.querySelector('.productEntry #product-name').value,
-        color: (typeof item !== "undefined") ? item.color : document.querySelector('.productEntry #colors').value,
-        category: (typeof item !== "undefined") ? item.category : document.querySelector('.productEntry #category').value,
-        price: (typeof item !== "undefined") ? item.price : document.querySelector('.productEntry #price').value,
+        name: document.querySelector('.productEntry #product-name').value || "",
+        color: document.querySelector('.productEntry #colors').value || "",
+        category: document.querySelector('.productEntry #category').value || "",
+        price: document.querySelector('.productEntry #price').value || 0
     };
-
-    socket.emit('new-product', product);
+    postProduct(product);
     return false
 }
 
@@ -91,13 +90,28 @@ formProducts.addEventListener('submit', (event)=>{
     addProduct();
 })
 
-const productItems = document.querySelector('.productList .productItems'); 
-if(!productItems.hasChildNodes()){
-    fetch('/api/productos/')
-    .then(response => response.json())
-    .then(data => {
-      data.map((element)=>{
-          addProduct(element)
-      });
-    });  
+async function postProduct(product) {
+    const config = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(product)
+    }
+
+    const response = await fetch('/api/productos/', config);
+    if (response.ok) {
+        socket.emit('new-product', product);
+    } 
 }
+
+
+async function fetchProducts() {
+    const response = await fetch('/api/productos/');
+    const data = await response.json();
+    console.log('--->', data);
+    renderProductos(data);
+}
+
+fetchProducts();
