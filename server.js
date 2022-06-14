@@ -26,7 +26,7 @@ const messages = [
     { author: 'Ana', text: 'Genial!', date: currentDate }
 ];
 
-const products = [];
+let products = [];
 
 app.use('/api/productos', productsRouter);
 
@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('User conectado, id: ' + socket.id);
     socket.emit('messages', messages);
+    products = [];
     //socket.emit('products', products);
 
     socket.on('new-message', (data) => {

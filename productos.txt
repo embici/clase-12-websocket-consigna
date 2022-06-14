@@ -4,3 +4,8 @@
 {"name":"teclado","color":"Purple","price":"90","category":"Accesories","id":4}
 {"name":"lapicero","color":"Green","price":"9","category":"Accesories","id":5}
 {"name":"libro","color":"Green","price":"999","category":"Laptop PC","id":6}
+{"name":"yyyy","color":"Red","price":"6","category":"Laptop PC","id":7}
+{"name":"ttt","color":"Red","price":"66","category":"Accesories","id":8}
+{"name":"yyyuuu","color":"White","price":"9000","category":"Laptop","id":9}
+{"name":"ioio","color":"Green","price":"888","category":"Laptop PC","id":10}
+{"name":"uiui","color":"Red","price":"99","category":"Accesories","id":11}

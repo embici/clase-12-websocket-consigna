@@ -68,7 +68,7 @@ const addMessage = () => {
     return false
 }
 
-const addProduct = (item) => {
+const addProduct = () => {
     const product = {
         name: document.querySelector('.productEntry #product-name').value || "",
         color: document.querySelector('.productEntry #colors').value || "",
@@ -114,6 +114,7 @@ async function fetchProducts() {
         if (response.ok) {
             const data = await response.json();
             // renderProductos(data);
+            document.querySelector('.productList .productItems').innerHTML = '';
             data.map(element => {
                 socket.emit('new-product', element);
             })
