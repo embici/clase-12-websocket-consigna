@@ -53,9 +53,6 @@ socket.on('messages', (messages) => {
   renderMessages(messages);
 })
 
-socket.on('products', (products) => {
-    renderProductos(products);
-})
   
 
 const addMessage = () => {
@@ -113,8 +110,11 @@ async function fetchProducts() {
         const response = await fetch('/api/productos/', {mode: 'no-cors'});
         if (response.ok) {
             const data = await response.json();
-            console.log('--->', data);
             renderProductos(data);
+            socket.on('products', (products) => {
+                renderProductos(products);
+            })
+
             return data;
         }
     } catch (error) {
