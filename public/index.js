@@ -92,7 +92,7 @@ formProducts.addEventListener('submit', (event)=>{
 })
 
 const productItems = document.querySelector('.productList .productItems'); 
-if(!productItems.hasChildNodes){
+if(!productItems.hasChildNodes()){
     fetch('/api/productos/')
     .then(response => response.json())
     .then(data => {
