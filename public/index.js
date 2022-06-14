@@ -53,7 +53,6 @@ socket.on('messages', (messages) => {
 })
 
 socket.on('products', (products) => {
-    console.log('Heelo', products);
     renderProductos(products);
 })
   
@@ -92,10 +91,13 @@ formProducts.addEventListener('submit', (event)=>{
     addProduct();
 })
 
-fetch('/api/productos/')
-  .then(response => response.json())
-  .then(data => {
-    data.map((element)=>{
-        addProduct(element)
-    });
-  });
+const productItems = document.querySelector('.productList .productItems'); 
+if(!productItems.hasChildNodes){
+    fetch('/api/productos/')
+    .then(response => response.json())
+    .then(data => {
+      data.map((element)=>{
+          addProduct(element)
+      });
+    });  
+}
