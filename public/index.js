@@ -23,6 +23,7 @@ const renderMessages = (data) => {
 }
 
 const renderProductos = (data) => {
+    console.log("AAAAAA", data)
     const html = data.map((element, index) => {
         return (`
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -108,10 +109,17 @@ async function postProduct(product) {
 
 
 async function fetchProducts() {
-    const response = await fetch('/api/productos/');
-    const data = await response.json();
-    console.log('--->', data);
-    renderProductos(data);
+    try {
+        const response = await fetch('/api/productos/', {mode: 'no-cors'});
+        if (response.ok) {
+            const data = await response.json();
+            console.log('--->', data);
+            renderProductos(data);
+            return data;
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 fetchProducts();
